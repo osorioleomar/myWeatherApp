@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Today's Forecast
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="black">
+
+	<p class="date">{{dateToday.toDateString()}}</p>
+	<h1 *ngIf="weatherResult.main.temp">{{weatherResult.main.temp}}<sup>°c</sup></h1>
+	<h3 *ngIf="weatherResult.name">{{weatherResult.name + ', ' + weatherResult.sys.country}}</h3>
+  	<h3 *ngFor="let item of weatherResult.weather">
+  	  {{item.description}}
+	  <div *ngFor="let item of weatherResult.weather">
+	  	<img src="{{'http://openweathermap.org/img/w/' + item.icon + '.png'}}">
+	  </div>
+  	</h3>
+
+  	<button ion-button block (click)="seeForecast()"> See 5 day forecast</button>
+</ion-content>
